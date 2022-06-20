@@ -3,12 +3,13 @@
 📣 Source codes for my personal website will be stored here! Website is currently under development and will be updated as time progresses.
 
 ## Plans for this page
-📣 Instead of building this webpage via the conventional HTML + CSS (and some JS) method, i will incorporate the usage of [Hakyll](https://jaspervdj.be/hakyll/).
+📣 Instead of building this webpage via the conventional HTML + CSS (and some JS) method, i will incorporate the usage of [Hakyll](https://jaspervdj.be/hakyll/). This is because ~~Hakyll makes blogging easier and i want to brag to the world~~ i wanted to challenge myself to learn new stuff and implement it to solidify my overall coding skills.
 
-📣 The end-in-mind when developing this webpage is to ensure that it is:
-* Simple 
-* Factual
-* Easy to maintain
+📣 The end-in-mind when developing this webpage (same concept when renovating a new house!) is to ensure that it is:
+* **Simple** 
+* **Responsive**
+* **Easy to maintain**
+* **Functionable in most devices**
 
 Having learnt (and did assignments) in front-end, back-end and full-stacked development, i realised that making website simplistic as possible will save you the _agony_ of maintaining dependencies in future. Design trends will always keep changing, so keeping things simple = making my life easier.
 
