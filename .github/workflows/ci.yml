@@ -31,9 +31,9 @@ steps:
       restore-keys: |
         ${{ runner.os }}-${{ matrix.ghc }}-
   - name: Build Site
-        run: |
-          cabal v3-build $CONFIG
-          cabal exec site build
+    run: |
+      cabal v3-build $CONFIG
+      cabal exec site build
   - name: Deploy 🚀
     uses: JamesIves/github-pages-deploy-action@4.3.3
     if: github.ref == 'refs/heads/main'
