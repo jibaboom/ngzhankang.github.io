@@ -1,8 +1,14 @@
+/* mobile devices
+@media print, screen {
+    
+} */
+
+/* desktops */
 body {
     color: black;
     font-size: 16px;
     margin: 0px auto 0px auto;
-    width: 600px;
+    width: 1200px;
 }
 
 div#header {
@@ -14,7 +20,8 @@ div#header {
 div#logo a {
     color: black;
     float: left;
-    font-size: 18px;
+    font-size: 22px;
+    font-family: 'Handlee', serif;
     font-weight: bold;
     text-decoration: none;
 }
