@@ -35,7 +35,7 @@ jobs:
           cabal v3-build $CONFIG
           cabal exec site build
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.3.3
+        uses: JamesIves/github-pages-deploy-action@v4.3.4
         if: github.ref == 'refs/heads/main'
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
