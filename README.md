@@ -11,7 +11,7 @@
 * **Easy to maintain**
 * **Functionable in most devices**
 
-Having learnt (and did assignments) in front-end, back-end and full-stacked development, i realised that making website simplistic as possible will save you the _agony_ of maintaining dependencies in future. Design trends will always keep changing, so keeping things simple = making my life easier.
+Having learnt (and did assignments) in front-end, back-end and full-stacked development, i realised that making website as simplistic as possible will save you the _agony_ of maintaining dependencies in future. Design trends will always keep changing, so keeping things simple = making my life easier.
 
 📣 Once this website is well-developed, ownership will be transferred from jibaboom(shell organisation i made) to ngzhankang(me!)
 
