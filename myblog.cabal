@@ -18,4 +18,6 @@ executable myblog
   default-language:    Haskell2010
   ghc-options:         -threaded
   build-depends:       base >= 4.7 && < 5,
-                       hakyll
+                       hakyll >= 4.15.1.1 && < 5,
+                       hjsmin == 0.2.*,
+                       bytestring >= 0.10.12

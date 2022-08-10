@@ -1,0 +1,132 @@
+@import "variables";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    font-family: $FiraSans;
+}
+html, body {
+    overflow-x: hidden;
+}
+html {
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}
+body {
+    font-family: $Merriweather;
+    font-size: 16px;
+    background: white;
+    color: black;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+h1 {
+    font-size: 24px;
+}
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+img {
+    width: 30px;
+    height: 30px;
+}
+hr {
+    background-color: #f5f5f5;
+    border: none;
+    display: block;
+    height: 2px;
+    margin: 1.5rem 0;
+}
+p {
+    font-family: $Merriweather;
+}
+footer {
+    background-color: #f5f5f5;
+    flex-grow: 0;
+    flex-shrink: 0;
+    text-align: center;
+    margin-top: 40px;
+    display: block;
+}
+.content {
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+}
+.content-footer {
+    padding: 3rem 1.5rem 6rem;
+    display: block;
+}
+.container-footer {
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+    text-align: center !important;
+    font-size: .75rem !important;
+}
+.wrap {
+    min-height: 100%;
+    position: relative;
+}
+.spacer {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+html a {
+    text-decoration: none;
+}
+
+
+
+
+// // uncomment this for hyperlink highlight to be orange
+// main a.underline {
+//     background: linear-gradient(to bottom, orange 0%, orange 100%);
+//     background-position: 0 100%;
+//     background-repeat: repeat-x;
+//     background-size: 3px 3px;
+//     color: #000;
+//     text-decoration: none;
+// }
+
+// uncomment this for hyperlink highlight to be colorful
+main a {
+    color: inherit;
+    text-decoration: inherit;
+    background:
+      linear-gradient(
+        to right,
+        orange,
+        orange
+      ),
+      linear-gradient(
+        to right,
+        rgba(255, 0, 0, 1),
+        rgba(255, 0, 180, 1),
+        rgba(0, 100, 200, 1)
+    );
+    background-size: 100% 3px, 0 3px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+main a:hover {
+    color: inherit;
+    text-decoration: inherit;
+    background-size: 0 3px, 100% 3px;
+}
+
+// uncomment this for the wave hyperlink effect onHover
+// main a.underline:hover {
+//     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23ff9800' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+//     background-position: 0 100%;
+//     background-size: auto 4px;
+//     background-repeat: repeat-x;
+//     text-decoration: none;
+// }

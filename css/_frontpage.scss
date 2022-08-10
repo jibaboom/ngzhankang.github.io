@@ -1,0 +1,45 @@
+@import "variables";
+
+
+// main, .content {
+//     align-items: center;
+//     display: flex;
+// }
+main {
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 3rem 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+// this one needs to be edited in the general scss as well
+.content h1:not(:first-child) {
+    margin-top: 1em;
+}
+.content h1 {
+    font-size: 2em;
+    margin-bottom: .5em;
+    font-family: $FiraSans;
+    color: #363636;
+    line-height: 1.125;
+}
+.content h4 {
+    color: #363636;
+    font-size: 1.35em;
+    margin-bottom: .8em;
+}
+.content p {
+    font-size: .9em
+}
+
+@media screen and (min-width: $screen-lg-min) {
+    .content {
+        max-width: 1152px;
+    }
+}
+@media screen and (min-width: $screen-xl-min) {
+    .content {
+        max-width: 1344px;
+    }
+}
