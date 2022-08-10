@@ -10,7 +10,8 @@ import           Text.Jasmine
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration { 
-    destinationDirectory = "_site"
+    -- destinationDirectory = "_site" we blanco this out because we need to generate files to docs for github to render
+    destinationDirectory = "docs"
 }
 
 

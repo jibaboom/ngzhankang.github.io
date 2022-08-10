@@ -19,5 +19,5 @@ cabal.sandbox.config
 .stack-work/
 .sass-cache/
 _cache/
-_site/
+# _site/
 dist-newstyle/
