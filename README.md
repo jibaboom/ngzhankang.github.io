@@ -1,4 +1,4 @@
-# jibaboom.github.io (ngzhankang.github.io in future)
+# ngzhankang.github.io
 ## Synopsis
 📣 Source codes for my personal website will be stored here! Website is currently under development and will be updated as time progresses.
 
