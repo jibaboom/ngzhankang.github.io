@@ -78,7 +78,7 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 -- >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
-                >>= cleanIndexUrls
+                -- >>= cleanIndexUrls
 
 
 
