@@ -1,6 +1,13 @@
 ---
-title: About
+title: About me
+image: images/others/profilePic.jpg
 ---
+
+
+
+
+
+I was born in 2002. 
 Nullam imperdiet sodales orci vitae molestie. Nunc quam orci, pharetra a
 rhoncus vitae, eleifend id felis. Suspendisse potenti. Etiam vitae urna orci.
 Quisque pellentesque dignissim felis, egestas tempus urna luctus vitae. In hac
