@@ -14,23 +14,36 @@ main {
 }
 
 // this one needs to be edited in the general scss as well
-.content h1:not(:first-child) {
-    margin-top: 1em;
-}
+// .content h1:not(:first-child) {
+//     margin-top: 1em;
+// }
 .content h1 {
-    font-size: 2em;
-    margin-bottom: .5em;
+    font-size: 1.6rem;
+    // margin-bottom: .5em;
     font-family: $FiraSans;
     color: #363636;
     line-height: 1.125;
+    margin-bottom: .3125rem;
 }
 .content h4 {
     color: #363636;
     font-size: 1.35em;
-    margin-bottom: .8em;
+    margin: {
+        top: 30px;
+        bottom: .8em;
+    }
 }
 .content p {
     font-size: .9em
+}
+
+.content h2 {
+    font: {
+        size: 1.3rem;
+        weight: 300;
+    }
+    margin-bottom: .3125rem;
+    font-family: $FiraSans;
 }
 
 @media screen and (min-width: $screen-lg-min) {
