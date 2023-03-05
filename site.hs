@@ -5,8 +5,8 @@ import qualified Data.ByteString.Lazy.Char8 as C
 import           Data.Monoid (mappend)
 import           Hakyll
 import           Text.Jasmine
-import           Data.List              (isSuffixOf)
-import           System.FilePath.Posix  (takeBaseName, takeDirectory, (</>), takeFileName)
+import           Data.List              (isInfixOf, isSuffixOf)
+import           System.FilePath.Posix  (splitFileName, takeBaseName, takeDirectory, (</>), takeFileName)
 
 
 --------------------------------------------------------------------------------
@@ -31,29 +31,26 @@ postCtx =
 
 
 -- clean url extensions (www.xyz/about.html -> www.xyz/about)
--- https://www.rohanjain.in/hakyll-clean-urls/
-cleanRoute :: Routes
-cleanRoute = customRoute createIndexRoute
-    where
-        createIndexRoute ident = takeDirectory p </> takeBaseName p </> "index.html"
-            where p = toFilePath ident
+-- https://yannesposito.com/Scratch/en/blog/Hakyll-setup/
+niceRoute :: Routes
+niceRoute = customRoute createIndexRoute
+  where
+    createIndexRoute ident =
+        takeDirectory p </> takeBaseName p </> "index.html"
+        where p=toFilePath ident
 
-cleanIndexUrls :: Item String -> Compiler (Item String)
-cleanIndexUrls = return . fmap (withUrls cleanIndex)
+-- replace url of the form foo/bar/index.html by foo/bar
+removeIndexHtml :: Item String -> Compiler (Item String)
+removeIndexHtml item = return $ fmap (withUrls removeIndexStr) item
 
-cleanIndexHtmls :: Item String -> Compiler (Item String)
-cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
-    where
-      pattern = "/index.html"
-      replacement = const "/"
-    
-cleanIndex :: String -> String
-cleanIndex url
-    | idx `isSuffixOf` url = take (length url - length idx) url
-    | otherwise            = url
-  where idx = "index.html"
-
-
+removeIndexStr :: String -> String
+removeIndexStr url = case splitFileName url of
+    (dir, "index.html") | isLocal dir -> dir
+                        | otherwise   -> url
+    _                                 -> url
+    where 
+        isLocal :: String -> Bool
+        isLocal uri = not (isInfixOf "://" uri)
 
 
 main :: IO ()
@@ -72,13 +69,11 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate"templates/default.html" postCtx
 
     match (fromList["about.md"]) $ do
-        route $ cleanRoute
+        route $ niceRoute
         compile $ pandocCompiler
                 >>= loadAndApplyTemplate "templates/about.html" postCtx
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
-                -- >>= loadAndApplyTemplate "templates/default.html" defaultContext
-                >>= relativizeUrls
-                -- >>= cleanIndexUrls
+                >>= removeIndexHtml
 
 
 
@@ -158,12 +153,11 @@ main = hakyllWith config $ do
 
 
     match (fromList["resume.md"]) $ do
-        route $ cleanRoute
+        route $ niceRoute
         compile $ pandocCompiler
                 -- >>= loadAndApplyTemplate "templates/about.html" postCtx
                 >>= loadAndApplyTemplate "templates/default.html" defaultContext
-                >>= relativizeUrls
-                >>= cleanIndexUrls
+                >>= removeIndexHtml
 
 
 
