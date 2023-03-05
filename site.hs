@@ -74,6 +74,7 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/about.html" postCtx
                 >>= loadAndApplyTemplate "templates/default.html" postCtx
                 >>= removeIndexHtml
+                >>= relativizeUrls
 
 
 
@@ -158,6 +159,7 @@ main = hakyllWith config $ do
                 -- >>= loadAndApplyTemplate "templates/about.html" postCtx
                 >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= removeIndexHtml
+                >>= relativizeUrls
 
 
 
