@@ -5,6 +5,8 @@ import qualified Data.ByteString.Lazy.Char8 as C
 import           Data.Monoid (mappend)
 import           Hakyll
 import           Text.Jasmine
+import           Data.List              (isSuffixOf)
+import           System.FilePath.Posix  (takeBaseName, takeDirectory, (</>), takeFileName)
 
 
 --------------------------------------------------------------------------------
@@ -29,14 +31,29 @@ postCtx =
 
 
 -- clean url extensions (www.xyz/about.html -> www.xyz/about)
--- https://github.com/sakshamsharma/acehack/blob/d2cdfbaffa8eeee548b52dcf20b71822c361848b/site.hs#L242
-cleanRoute :: Bool -> Routes
-cleanRoute isTopLevel =
-  customRoute $
-  (++ "/index.html") . takeWhile (/= '.') . adjustPath isTopLevel . toFilePath
-  where
-    adjustPath False = id
-    adjustPath True  = reverse . takeWhile (/= '/') . reverse
+-- https://www.rohanjain.in/hakyll-clean-urls/
+cleanRoute :: Routes
+cleanRoute = customRoute createIndexRoute
+    where
+        createIndexRoute ident = takeDirectory p </> takeBaseName p </> "index.html"
+            where p = toFilePath ident
+
+cleanIndexUrls :: Item String -> Compiler (Item String)
+cleanIndexUrls = return . fmap (withUrls cleanIndex)
+
+cleanIndexHtmls :: Item String -> Compiler (Item String)
+cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
+    where
+      pattern = "/index.html"
+      replacement = const "/"
+    
+cleanIndex :: String -> String
+cleanIndex url
+    | idx `isSuffixOf` url = take (length url - length idx) url
+    | otherwise            = url
+  where idx = "index.html"
+
+
 
 
 main :: IO ()
@@ -55,11 +72,12 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate"templates/default.html" postCtx
 
     match (fromList["about.md"]) $ do
-        route $ cleanRoute True
+        route $ cleanRoute
         compile $ pandocCompiler
                 >>= loadAndApplyTemplate "templates/about.html" postCtx
                 >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
+                >>= cleanIndexUrls
 
 
 
@@ -139,12 +157,12 @@ main = hakyllWith config $ do
 
 
     match (fromList["resume.md"]) $ do
-        route $ cleanRoute True
+        route $ cleanRoute
         compile $ pandocCompiler
                 -- >>= loadAndApplyTemplate "templates/about.html" postCtx
                 >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
-
+                >>= cleanIndexUrls
 
 
 
