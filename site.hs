@@ -75,7 +75,8 @@ main = hakyllWith config $ do
         route $ cleanRoute
         compile $ pandocCompiler
                 >>= loadAndApplyTemplate "templates/about.html" postCtx
-                >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= loadAndApplyTemplate "templates/default.html" postCtx
+                -- >>= loadAndApplyTemplate "templates/default.html" defaultContext
                 >>= relativizeUrls
                 >>= cleanIndexUrls
 
