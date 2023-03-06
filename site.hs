@@ -24,33 +24,57 @@ compressJsCompiler = do
     return $ itemSetBody (minifyJS s) s
 
 
+
+
+
+
+-- postCtx :: Context String
+-- postCtx =
+--     dateField "date" "%B %e, %Y" `mappend`
+--     defaultContext
+
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
+  dateField "date" "%B %e, %Y" <>
+  siteCtx
+
+siteCtx :: Context String
+siteCtx =
+  activeClassField <>
+  defaultContext
+
+activeClassField :: Context a
+activeClassField = functionField "activeClass" $ \[p] _ -> do
+  path <- toFilePath <$> getUnderlying
+  return $ if path == p then "active" else "inactive"
+
+
+
 
 
 -- clean url extensions (www.xyz/about.html -> www.xyz/about)
--- https://yannesposito.com/Scratch/en/blog/Hakyll-setup/
-niceRoute :: Routes
-niceRoute = customRoute createIndexRoute
+-- from https://www.rohanjain.in/hakyll-clean-urls/
+cleanRoute :: Routes
+cleanRoute = customRoute createIndexRoute
   where
-    createIndexRoute ident =
-        takeDirectory p </> takeBaseName p </> "index.html"
-        where p=toFilePath ident
+    createIndexRoute ident = takeDirectory p </> takeBaseName p </> "index.html"
+        where p = toFilePath ident
 
--- replace url of the form foo/bar/index.html by foo/bar
-removeIndexHtml :: Item String -> Compiler (Item String)
-removeIndexHtml item = return $ fmap (withUrls removeIndexStr) item
+cleanIndexUrls :: Item String -> Compiler (Item String)
+cleanIndexUrls = return . fmap (withUrls cleanIndex)
 
-removeIndexStr :: String -> String
-removeIndexStr url = case splitFileName url of
-    (dir, "index.html") | isLocal dir -> dir
-                        | otherwise   -> url
-    _                                 -> url
-    where 
-        isLocal :: String -> Bool
-        isLocal uri = not (isInfixOf "://" uri)
+cleanIndexHtmls :: Item String -> Compiler (Item String)
+cleanIndexHtmls = return . fmap (replaceAll pattern replacement)
+    where
+      pattern = "/index.html"
+      replacement = const "/"
+
+cleanIndex :: String -> String
+cleanIndex url
+    | idx `isSuffixOf` url = take (length url - length idx) url
+    | otherwise            = url
+  where idx = "index.html"
+
 
 
 main :: IO ()
@@ -69,12 +93,14 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate"templates/default.html" postCtx
 
     match (fromList["about.md"]) $ do
-        route $ niceRoute
+        route $ cleanRoute
         compile $ pandocCompiler
-                >>= loadAndApplyTemplate "templates/about.html" postCtx
-                >>= loadAndApplyTemplate "templates/default.html" postCtx
-                >>= removeIndexHtml
+                -- >>= loadAndApplyTemplate "templates/about.html" postCtx
+                >>= loadAndApplyTemplate "templates/about.html" siteCtx
+                -- >>= loadAndApplyTemplate "templates/default.html" postCtx
+                >>= loadAndApplyTemplate "templates/default.html" siteCtx
                 >>= relativizeUrls
+                >>= cleanIndexUrls
 
 
 
@@ -154,12 +180,13 @@ main = hakyllWith config $ do
 
 
     match (fromList["resume.md"]) $ do
-        route $ niceRoute
+        route $ cleanRoute
         compile $ pandocCompiler
                 -- >>= loadAndApplyTemplate "templates/about.html" postCtx
-                >>= loadAndApplyTemplate "templates/default.html" defaultContext
-                >>= removeIndexHtml
+                -- >>= loadAndApplyTemplate "templates/default.html" defaultContext
+                >>= loadAndApplyTemplate "templates/default.html" siteCtx
                 >>= relativizeUrls
+                >>= cleanIndexUrls
 
 
 
