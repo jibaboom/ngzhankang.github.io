@@ -212,7 +212,7 @@ main = hakyllWith config $ do
     --         >>= \fp -> unixFilter "sass" ["--scss", fp] ""
     --         >>= makeItem
 
-    create ["default.css"] $ do
+    create ["stylesheet/default.css"] $ do
         route idRoute
         compile $ do
             items <- loadAll "css/*"
