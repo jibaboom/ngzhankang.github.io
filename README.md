@@ -1,21 +1,13 @@
-# jibaboom.github.io (ngzhankang.github.io in future)
+# ngzhankang.github.io
 ## Synopsis
-📣 Source codes for my personal website will be stored here! Website is currently under development and will be updated as time progresses.
+📣 Welcome to the github page for my personal website! Do comment or send me a PM should you feel there is something that can be improved! :D
 
 ## Plans for this page
-📣 Instead of building this webpage via the conventional HTML + CSS (and some JS) method, i will incorporate the usage of [Hakyll](https://jaspervdj.be/hakyll/). This is because ~~Hakyll makes blogging easier and i want to brag to the world~~ i wanted to challenge myself to learn new stuff and implement it to solidify my overall coding skills.
+📣 Reogrganise sass file structures and the repository.
 
-📣 The end-in-mind when developing this webpage (same concept when renovating a new house!) is to ensure that it is:
-* **Simple** 
-* **Responsive**
-* **Easy to maintain**
-* **Functionable in most devices**
+📣 Start blogging!
 
-Having learnt (and did assignments) in front-end, back-end and full-stacked development, i realised that making website as simplistic as possible will save you the _agony_ of maintaining dependencies in future. Design trends will always keep changing, so keeping things simple = making my life easier.
-
-📣 Once this website is well-developed, ownership will be transferred from jibaboom(shell organisation i made) to ngzhankang(me!)
-
-📣 More updates to come in future!
+📣 Study the feasibility and if implementing dark mode is necessary.
 
 ## Inspirations
 📣 Inspired from github strangers and other sources: 
