@@ -5,7 +5,7 @@ lastUpdate: 13/2/2023
 ---
 
 
-I'm Ng Zhan Kang, class of 2021 Diploma In Information Technology graduate from <a href="https://www.sp.edu.sg/" class="underline">Singapore Polytechnic</a>. I am currently serving my nation for 2 years before i continue to pursue further education in a <a href="https://www.singaporetech.edu.sg/undergraduate-programmes/applied-artificial-intelligence" class="underline">local public university</a>.
+I'm Ng Zhan Kang, class of 2021 Diploma In Information Technology graduate from <a href="https://www.sp.edu.sg/" class="underline">Singapore Polytechnic</a>. I am currently serving my nation for 2 years before i continue to pursue further education in a <a href="https://www.sutd.edu.sg/" class="underline">local public university</a>.
 
 During my schooling years in Singapore Polytechnic, I have done projects related to full-stacked web development, Machine Learning, and Deep Analysis. My final-year project team and I have also worked on creating Natural Language Processing models for a local bank to categorize companies according to their appropriate sectors based on the company description.
 
