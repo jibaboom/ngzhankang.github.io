@@ -7,6 +7,8 @@ title: Resume
 <h2>Diploma In Information Technology</h2>
 <p>
     <strong>Singapore Polytechnic</strong> — <em>Apr 2019 - Apr 2022</em>
+    <br>
+    <strong>Singapore University Of Technology And Design</strong> — <em>July 2025 - </em> 
 </p>
 
 
