@@ -12,7 +12,7 @@ jobs:
         cabal: ["3.6.2.0"]
         ghc: ["8.10.7"]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Haskell
         uses: actions/setup-haskell@v1.1
         with:
