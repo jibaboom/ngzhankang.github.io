@@ -29,9 +29,9 @@ title: Resume
     <strong>Inspiraz Technology Pte. Ltd.</strong> — <em>Sept 2021 - Feb 2022</em>
 </p>
 
-* Assisted in blueprint development, modular designing, programming and testing of screw Inspection module for WizerPro2 software within 4 months.
-* Re-wrote previous intern code script, rectifying underlying bugs and raising code efficiency by 40%.
-* Engaged in User Acceptance Test (UAT) of WizerPro2 Software and reported 2 vulnerable bugs in software, effectively reducing bugs by 10% before scheduled release.
+* Assisted in developing an Automated Screw Thread Inspection software module for WizerPro Machine Vision Software.
+* Worked with C++ and MVTec Halcon software to perform thread measurements, supporting quality control processes by flagging screws that do not meet the required standards.
+* Engaged in User Acceptance Test (UAT) of WizerPro Software, assiting team in improving software reliability and performance.
 
 
 # Technical Skills
